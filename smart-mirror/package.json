@@ -1,0 +1,28 @@
+{
+  "name": "d3-smart-mirror",
+  "version": "0.0.1",
+  "description": "The start of something wonderful",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom/electron-quick-start.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/atom/electron-quick-start/issues"
+  },
+  "homepage": "https://d3osu.org",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0"
+  }
+}
