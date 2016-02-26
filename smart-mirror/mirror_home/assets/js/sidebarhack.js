@@ -11,6 +11,9 @@
 
 				var $sidebar_a = $sidebar.find('a');
 
+				//Removes all the classes, this prevents that highlight bug from moccuring, but deselects the current one, this SOHULDNT be an issue later
+				$sidebar_a.removeClass();
+
 				$sidebar_a
 					.addClass('scrolly')
 					.on('click', function() {

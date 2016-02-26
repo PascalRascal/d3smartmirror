@@ -5,11 +5,12 @@ $(document).ready(function() {
     if (event.which == 13) {
       event.preventDefault();
       addAnother("hello","funnBoy");
+      addAnother("hello1","funnBoy2");
+      addAnother("hello2","funnBoy3");
+      addAnother("hello3","funnBoy4");
+      addAnother("hello4","funnBoy5");
       send();
     }
-  });
-  $("#rec").click(function(event) {
-    switchRecognition();
   });
 });
 var recognition;
@@ -60,13 +61,7 @@ function stopRecognition() {
     recognition = null;
   }
 }
-function switchRecognition() {
-  if (recognition) {
-    stopRecognition();
-  } else {
-    startRecognition();
-  }
-}
+
 function setInput(text) {
   $("#input").val(text);
   console.log(text);
