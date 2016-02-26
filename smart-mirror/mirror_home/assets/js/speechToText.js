@@ -1,12 +1,10 @@
 "use strict"
-var accessToken = "b942ebaf37544935991db49c29597bc0";
-var subscriptionKey = "13d574bf-2067-4c53-8972-08687dd75b3c";
 var baseUrl = "https://api.api.ai/v1/";
 $(document).ready(function() {
   $("#input").keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
-      addAnother("test","Blaise");
+      addAnother("hello","funnBoy");
       send();
     }
   });
@@ -84,8 +82,8 @@ function send() {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     headers: {
-      "Authorization": "Bearer " + accessToken,
-      "ocp-apim-subscription-key": subscriptionKey
+      "Authorization": "Bearer " + APIAI_ACCESSTOKEN,
+      "ocp-apim-subscription-key": APIAI_SUBSCRIPTIONKEY
     },
     data: JSON.stringify({ q: text, lang: "en" }),
     success: function(data) {
@@ -105,9 +103,6 @@ function addAnother(href, title) {
     var ul = document.getElementById("applist");
     console.log(ul.innerHTML);
     var li = document.createElement("li");
-    var children = ul.children.length + 1;
-    console.log(children);
-    li.setAttribute("id", title);
 
     var wrapper = document.getElementById("wrapper");
 
@@ -124,11 +119,19 @@ function addAnother(href, title) {
 
 
     var content = document.createElement("a");
+    content.setAttribute("id", title);
     content.setAttribute("href", "#" + href);
     content.appendChild(document.createTextNode(title));
 
     li.appendChild(content);
     ul.appendChild(li)
-    console.log(ul.innerHTML);
+
+
+    $.getScript("assets/js/sidebarhack.js", function(){
+
+       console.log("Script loaded but not necessarily executed.");
+
+    });
+    console.log(li.innerHTML);
 
 }

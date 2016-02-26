@@ -10,15 +10,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="assets/js/jquery.min.js"></script>
+		<script>
+			//This is how you load jquery with Electron. Jquery is used for various DOM things
+			window.$ = window.jQuery = require('./assets/js/jquery.min.js');
+		</script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
+
+		<!--This loads the file with the keys for all the APIs used -->
+		<script src = "assets/js/config.js"></script>
+
 		<script id="mainjs" src="assets/js/main.js"></script>
+		<script src="assets/js/speechToText.js"></script>
 		<script>
 			//Hides the scrollbar, very nice!
-	    //document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+	    document.documentElement.style.overflow = 'hidden';  // firefox, chrome
 		</script>
 	</head>
 	<body>
@@ -53,9 +61,6 @@
 				<section id="one" class="wrapper style2 fullscreen fade-up">
 					<head>
 						<title>API Example</title>
-						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-						<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-						<script src="assets/js/speechToText.js"></script>
 					</head>
 					<body>
 						<div>
