@@ -4,19 +4,16 @@ $(document).ready(function() {
   $("#input").keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
-      addAnother("hello","funnBoy");
-      addAnother("hello1","funnBoy2");
-      addAnother("hello2","funnBoy3");
-      addAnother("hello3","funnBoy4");
-      addAnother("hello4","funnBoy5");
       send();
     }
   });
 });
+
 var recognition;
 var recognizing = false;
 var ignore_onend;
 var final_transcript = '';
+
 function startRecognition() {
   recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
@@ -82,6 +79,7 @@ function send() {
     },
     data: JSON.stringify({ q: text, lang: "en" }),
     success: function(data) {
+      getServiceFromAPIAI(data);
       setResponse(JSON.stringify(data, undefined, 2));
     },
     error: function() {
@@ -105,13 +103,14 @@ function addAnother(href, title) {
     page.setAttribute("id",href);
     page.setAttribute("class","wrapper style1 fullscreen");
     var inner = document.createElement("div");
-    inner.innerHTML = "<h1> Hello Friends </hi> <p> Invest in Bitcoin!</p>";
-    var script = document.createElement("script");
+
+    var data3 = fs.readFileSync('services/demo/helloWorld/demo_blaise.html');
+
+    inner.innerHTML = data3.toString();
+
     page.appendChild(inner);
 
     wrapper.appendChild(page);
-
-
 
     var content = document.createElement("a");
     content.setAttribute("id", title);
@@ -125,6 +124,7 @@ function addAnother(href, title) {
     $.getScript("assets/js/sidebarhack.js", function(){
 
        console.log("Script loaded but not necessarily executed.");
+       document.getElementById(title).click();
 
     });
     console.log(li.innerHTML);

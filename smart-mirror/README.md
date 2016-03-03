@@ -1,30 +1,24 @@
-# electron-quick-start
+# D3 Smart Mirror (name in progress)
 
-**Clone and run for a quick way to see an Electron in action.**
+**T H E d3 smart mirror app**
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
+This is a unique take on the smart mirror designed by a team at The Ohio State University's
+D3 club.
 
-A basic Electron application needs just these files:
 
-- `index.html` - A web page to render.
-- `main.js` - Starts the app and creates a browser window to render HTML.
-- `package.json` - Points to the app's main file and lists its details and dependencies.
+It is built in Node.js/Electron.js and uses a basic template from html5up for UI
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
+
+
 
 ## To Use
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
 # Clone this repository
-git clone https://github.com/atom/electron-quick-start
+git clone https://github.com/PascalRascal/d3smartmirror
 # Go into the repository
-cd electron-quick-start
+cd smart-mirror
 # Install dependencies and run the app
 npm install && npm start
 ```
-
-Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
 
 #### License [CC0 (Public Domain)](LICENSE.md)
