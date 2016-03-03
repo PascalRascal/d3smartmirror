@@ -22,10 +22,12 @@ function startRecognition() {
 
   recognition.onstart = function(event) {
     recognizing = true;
+    console.log('Starting to listen!');
   };
 
   recognition.onresult = function(event) {
     var interim_transcript = '';
+    console.log('We got something!');
     if (typeof(event.results) == 'undefined') {
       recognition.onend = null;
       recognition.stop();
@@ -45,19 +47,24 @@ function startRecognition() {
     };
 
   recognition.onend = function() {
+    recognition.start();
+    console.log('No longer listening rofl u wish!')
+
   };
   recognition.lang = "en-US";
   recognition.start();
 };
 
 startRecognition();
-
+//Might need this later, for now though we dont
+/*
 function stopRecognition() {
   if (recognition) {
     recognition.stop();
     recognition = null;
   }
 }
+*/
 
 function setInput(text) {
   $("#input").val(text);
@@ -90,43 +97,4 @@ function send() {
 }
 function setResponse(val) {
   $("#response").text(val);
-}
-
-function addAnother(href, title) {
-    var ul = document.getElementById("applist");
-    console.log(ul.innerHTML);
-    var li = document.createElement("li");
-
-    var wrapper = document.getElementById("wrapper");
-
-    var page = document.createElement("section");
-    page.setAttribute("id",href);
-    page.setAttribute("class","wrapper style1 fullscreen");
-    var inner = document.createElement("div");
-
-    var data3 = fs.readFileSync('services/demo/helloWorld/demo_blaise.html');
-
-    inner.innerHTML = data3.toString();
-
-    page.appendChild(inner);
-
-    wrapper.appendChild(page);
-
-    var content = document.createElement("a");
-    content.setAttribute("id", title);
-    content.setAttribute("href", "#" + href);
-    content.appendChild(document.createTextNode(title));
-
-    li.appendChild(content);
-    ul.appendChild(li)
-
-
-    $.getScript("assets/js/sidebarhack.js", function(){
-
-       console.log("Script loaded but not necessarily executed.");
-       document.getElementById(title).click();
-
-    });
-    console.log(li.innerHTML);
-
 }

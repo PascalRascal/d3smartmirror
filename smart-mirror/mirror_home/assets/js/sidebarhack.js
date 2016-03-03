@@ -1,5 +1,3 @@
-(function($) {
-
 	$(function() {
 
 		var	$window = $(window),
@@ -19,7 +17,7 @@
 					.on('click', function() {
 
 						var $this = $(this);
-
+						console.log("An Element was clicked!");
 						// External link? Bail.
 							if ($this.attr('href').charAt(0) != '#')
 								return;
@@ -56,13 +54,15 @@
 
 								},
 								enter: function() {
+									console.log('Entered');
 
 									// Activate section.
-										$section.removeClass('inactive');
+									$section.removeClass('inactive');
+									$this.removeClass('active');
 
 									// No locked links? Deactivate all links and activate this section's one.
 										if ($sidebar_a.filter('.active-locked').length == 0) {
-
+											console.log('No Locked links. All links deactivated and this one activated');
 											$sidebar_a.removeClass('active');
 											$this.addClass('active');
 
@@ -70,7 +70,9 @@
 
 									// Otherwise, if this section's link is the one that's locked, unlock it.
 										else if ($this.hasClass('active-locked'))
+											$sidebar_a.removeClass('active');
 											$this.removeClass('active-locked');
+											$this.addClass('active');
 
 								}
 							});
@@ -81,7 +83,18 @@
 
 		// Scrolly.
 			$('.scrolly').scrolly({
-				speed: 1000
+				speed: 1500,
+				offset: function() {
+
+					// If <=large, >small, and sidebar is present, use its height as the offset.
+						if (skel.breakpoint('large').active
+						&&	!skel.breakpoint('small').active
+						&&	$sidebar.length > 0)
+							return $sidebar.height();
+
+					return 0;
+
+				}
 			});
 
 
@@ -99,6 +112,7 @@
 
 						},
 						enter: function() {
+							console.log($this);
 
 							// Activate section.
 								$(this).removeClass('inactive');
@@ -107,5 +121,3 @@
 					});
 
 	});
-
-})(jQuery);
