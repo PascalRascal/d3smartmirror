@@ -1,6 +1,6 @@
 {
   "name": "d3-smart-mirror",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "The start of something wonderful",
   "main": "main.js",
   "scripts": {
