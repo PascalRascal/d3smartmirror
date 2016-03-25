@@ -4,7 +4,7 @@
 			$body = $('body'),
 			$sidebar = $('#sidebar');
 
-		// Sidebar.
+		// Sidebar
 			if ($sidebar.length > 0) {
 
 				var $sidebar_a = $sidebar.find('a');

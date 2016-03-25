@@ -1,0 +1,12 @@
+{
+  "href" : "catapp",
+  "title": "Cats4Days",
+  "description": "Do you like Cats? I do. Try this service and see what cats you like!",
+  "author": "Blaise Marchetti",
+  "html": "demo_blaise.html",
+  "entity_name": "CatApp",
+  "commands": [
+
+  ],
+  "main": "main.js"
+}

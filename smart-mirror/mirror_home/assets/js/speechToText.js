@@ -1,7 +1,7 @@
 "use strict"
 var baseUrl = "https://api.api.ai/v1/";
 $(document).ready(function() {
-  $("#input").keypress(function(event) {
+  $("#speechTranscript").keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
       send();
@@ -9,13 +9,12 @@ $(document).ready(function() {
   });
 });
 
-var recognition;
 var recognizing = false;
 var ignore_onend;
 var final_transcript = '';
 
 function startRecognition() {
-  recognition = new webkitSpeechRecognition();
+  var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
   recognizing = true;
@@ -29,8 +28,6 @@ function startRecognition() {
     var interim_transcript = '';
     console.log('We got something!');
     if (typeof(event.results) == 'undefined') {
-      recognition.onend = null;
-      recognition.stop();
       console.log('Undefined!');
       return;
     }
@@ -41,14 +38,13 @@ function startRecognition() {
         setInput(final_transcript);
       } else {
         interim_transcript += event.results[i][0].transcript;
-        $("#input").val(interim_transcript);
+        $("#speechTranscript").val(interim_transcript);
       }
     }
     };
 
   recognition.onend = function() {
-    recognition.start();
-    console.log('No longer listening rofl u wish!')
+    console.log('No longer listening!')
 
   };
   recognition.lang = "en-US";
@@ -67,14 +63,14 @@ function stopRecognition() {
 */
 
 function setInput(text) {
-  $("#input").val(text);
+  $("#speechTranscript").val(text);
   console.log(text);
   send();
   final_transcript = '';
 }
 
 function send() {
-  var text = $("#input").val();
+  var text = $("#speechTranscript").val();
   $.ajax({
     type: "POST",
     url: baseUrl + "query/",

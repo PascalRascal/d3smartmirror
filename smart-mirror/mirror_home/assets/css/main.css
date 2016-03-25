@@ -3475,7 +3475,7 @@
 /* Wrapper (main) */
 
 	#sidebar + #wrapper {
-		margin-left: 18em;
+		margin-left: 12em;
 	}
 
 		@media screen and (max-width: 1280px) {
@@ -3530,6 +3530,15 @@
 		margin: 0 auto;
 	}
 
+
+	#speechToText {
+		position: fixed;
+		z-index: 10001;
+		bottom: 0;
+		margin-left: 12em;
+		left: 25%;
+	}
+
 /* Sidebar */
 
 	#sidebar {
@@ -3539,12 +3548,13 @@
 		height: 100vh;
 		left: 0;
 		overflow-x: hidden;
-		overflow-y: auto;
+		overflow-y: hidden;
 		position: fixed;
 		text-align: right;
 		top: 0;
-		width: 18em;
+		width: 12em;
 		z-index: 10000;
+		overflow: hidden !important;
 	}
 
 		#sidebar > .inner {
@@ -3771,7 +3781,7 @@
 			}
 
 			#sidebar nav a:before {
-				
+
 			}
 
 			#sidebar nav a:after {

@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+
 		<script>
 			//This is how you load jquery with Electron. Jquery is used for various DOM things
 			window.$ = window.jQuery = require('./assets/js/jquery.min.js');
@@ -21,6 +22,7 @@
 
 		<!--This loads the file with the keys for all the APIs used -->
 		<script src = "assets/js/config.js"></script>
+
 
 		<script id="mainjs" src="assets/js/main.js"></script>
 		<script src="assets/js/speechToText.js"></script>
@@ -34,6 +36,9 @@
 
 		<!-- Sidebar -->
 			<section id="sidebar">
+				<div id="clock">
+				Hello Friendo
+			</div>
 				<div class="inner" id="list">
 					<nav>
 						<ul id="applist">
@@ -47,15 +52,10 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<head>
-						</head>
-						<body>
-							<h1>Hello Gorgeous</h1>
-							<p>Welcome to the D3 Smart Mirror (Name in progress)</p>
-							<p>Try asking for a cute cat</p>
-						</body>
-					</section>
+					<section id="intro" class="wrapper style1 fullscreen fade-up" >
+						<webview id = "youtubeMusicPlayer" src = "wwww.google.com" style="visibility: hidden;"> </webview>
+						<script src = "assets/js/youtubeauth.js"></script>
+					 </section>
 				<!-- One -->
 				<section id="one" class="wrapper style1 fullscreen fade-up">
 					<head>
@@ -69,6 +69,10 @@
 					</body>
 				</section>
 
+			</div>
+
+			<div id ="speechToText" class = "speechToText">
+				<textarea id ="speechTranscript" onkeyup="auto_grow(this)" style="overflow:hidden; outline: none; resize: none; min-height: 50px; max-height: 100px;" rows = "1" cols="40" wrap = "hard"></textarea>
 			</div>
 
 	</body>

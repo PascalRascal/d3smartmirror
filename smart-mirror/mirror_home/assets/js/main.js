@@ -4,6 +4,12 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+//Used in the voice to text box!
+function auto_grow(element) {
+	element.style.height = "5px";
+	element.style.height = (element.scrollHeight)+"px";
+}
+
 (function($) {
 
 
