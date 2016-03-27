@@ -6,6 +6,8 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+var ipcMain = electron.ipcMain;
+
 var fs = require("fs"),
     path = require("path");
 
@@ -13,10 +15,15 @@ var fs = require("fs"),
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+//Shoots back the youtube video url from the webview to the renderer
+ipcMain.on('videoDOM', function(event, arg) {
+  mainWindow.webContents.send('youtubeMusicSrc', arg);
+});
+
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, kiosk:true});
+  mainWindow = new BrowserWindow({width: 1600, height: 1200, kiosk: true});
   mainWindow.setMenu(null);
 
   // and load the index.html of the app.

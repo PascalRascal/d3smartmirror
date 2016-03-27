@@ -22,9 +22,15 @@ fs.readdir(p, function (err, files) {
 });
 
 var getServiceFromAPIAI = function(data){
-  if(data.result.source = "domains"){
-    if(data.result.action = "media.music_play"){
+
+  if(data.result.source == "domains"){
+    if(data.result.metadata.action == "media.music_play" && data.result.parameters){
+      console.log('Playing a song!');
+      console.log(data.result);
       musicPlay(data);
+    }else if(data.result.metadata.action == "media.navigation_stop"){
+      console.log('pausing');
+      pauseYoutubeMusic();
     }
   }
 

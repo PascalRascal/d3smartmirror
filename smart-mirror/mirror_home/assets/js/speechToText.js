@@ -10,8 +10,8 @@ $(document).ready(function() {
 });
 
 var recognizing = false;
-var ignore_onend;
 var final_transcript = '';
+
 
 function startRecognition() {
   var recognition = new webkitSpeechRecognition();
@@ -22,6 +22,7 @@ function startRecognition() {
   recognition.onstart = function(event) {
     recognizing = true;
     console.log('Starting to listen!');
+    console.log(recognition);
   };
 
   recognition.onresult = function(event) {
@@ -41,14 +42,20 @@ function startRecognition() {
         $("#speechTranscript").val(interim_transcript);
       }
     }
+
     };
 
   recognition.onend = function() {
     console.log('No longer listening!')
-
   };
+
+  recognition.onerror = function(event){
+
+    console.log(event);
+  }
   recognition.lang = "en-US";
   recognition.start();
+
 };
 
 startRecognition();

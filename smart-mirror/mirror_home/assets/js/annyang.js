@@ -144,6 +144,7 @@
         invokeCallbacks(callbacks.error);
         switch (event.error) {
         case 'network':
+          console.log(event);
           invokeCallbacks(callbacks.errorNetwork);
           break;
         case 'not-allowed':
@@ -175,6 +176,7 @@
       };
 
       recognition.onresult  = function(event) {
+        console.log(event);
         if(pauseListening) {
           if (debugState) {
             root.console.log('Speech heard, but annyang is paused');

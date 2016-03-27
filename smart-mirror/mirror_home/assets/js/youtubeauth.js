@@ -5,22 +5,25 @@
 */
 var google = require('googleapis');
 var util = require('util');
+const ipcRenderer = require('electron').ipcRenderer;
 
+var html5musicplayer = document.getElementById('html5MusicSource');
+html5musicplayer.addEventListener('canplay', function(){
+  html5musicplayer.play();
+})
+
+ipcRenderer.on('youtubeMusicSrc', function(event, arg){
+  console.log(arg);
+  html5musicplayer.setAttribute("src", arg);
+});
 
 var youtube = google.youtube('v3');
 
 var youtubeMusicPlayer = document.getElementById('youtubeMusicPlayer');
 
-youtubeMusicPlayer.addEventListener("dom-ready", function() {
-  console.log('dom is ready');
-  youtubeMusicPlayer.openDevTools()
-  youtubeMusicPlayer.executeJavaScript('var element1 = document.createElement("script");element1.src = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";element1.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(element1);', function(){
-    console.log('jquery injected!');
-  });
+youtubeMusicPlayer.addEventListener("did-finish-load", function() {
+  youtubeMusicPlayer.executeJavaScript("var elements = document.getElementsByTagName('video'); var playButton = elements[0]; console.log(playButton); require('electron').ipcRenderer.send('videoDOM', playButton.src);");
 });
-youtubeMusicPlayer.addEventListener('media-started-playing', function(){
-  console.log('Music is now playing');
-})
 
 
   var findYoutubeMusic = function(query){
@@ -32,18 +35,22 @@ youtubeMusicPlayer.addEventListener('media-started-playing', function(){
 
   function getYoutubeSong(data){
     var items = data.items;
-    console.log(data);
     for(i = 0; i < items.length; i++){
       if(items[i].snippet.title.toLowerCase().indexOf('lyrics') != -1){
         loadYoutubeSong(items[i].id.videoId)
         return;
       }
     }
-    loadYoutubeSong(items[0].id);
+    loadYoutubeSong(items[0].id.videoId);
   }
 
   function loadYoutubeSong(videoId){
-    console.log('Here we go!');
+    console.log('Playing video with Id ' + videoId);
     //document.getElementById('youtubeMusicPlayer').setAttribute('src','https://www.youtube.com/watch?v=9teDD_nY-KU?autoplay=1');
     youtubeMusicPlayer.loadURL('https://www.youtube.com/watch?v=' + videoId + '?autoplay=1');
+  }
+
+
+  var pauseYoutubeMusic = function(){
+    html5musicplayer.pause();
   }

@@ -22,8 +22,7 @@
 
 		<!--This loads the file with the keys for all the APIs used -->
 		<script src = "assets/js/config.js"></script>
-
-
+		<script src="assets/js/annyang.js"></script>
 		<script id="mainjs" src="assets/js/main.js"></script>
 		<script src="assets/js/speechToText.js"></script>
 		<script src="assets/js/appLauncher.js"></script>
@@ -35,10 +34,10 @@
 	<body>
 
 		<!-- Sidebar -->
-			<section id="sidebar">
+		<section id="sidebar">
 				<div id="clock">
-				Hello Friendo
-			</div>
+					hello friends
+				</div>
 				<div class="inner" id="list">
 					<nav>
 						<ul id="applist">
@@ -46,6 +45,8 @@
 							<li><a href="#one">Speech Demo</a></li>
 						</ul>
 					</nav>
+					<webview id = "youtubeMusicPlayer" src = "https://wwww.google.com" style = "opacity: 0; width: 0px;" nodeintegration = "on" useragent = "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19"> </webview>
+					<audio  controls id= "html5MusicSource"src = "" type = "video/mp4"> Testing 1-2 </audio>
 				</div>
 			</section>
 
@@ -53,7 +54,6 @@
 			<div id="wrapper">
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up" >
-						<webview id = "youtubeMusicPlayer" src = "wwww.google.com" style="visibility: hidden;"> </webview>
 						<script src = "assets/js/youtubeauth.js"></script>
 					 </section>
 				<!-- One -->
