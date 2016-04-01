@@ -27,6 +27,7 @@ function startRecognition() {
 
   recognition.onresult = function(event) {
     var interim_transcript = '';
+    var isCommand = false;
     console.log('We got something!');
     if (typeof(event.results) == 'undefined') {
       console.log('Undefined!');
@@ -36,10 +37,28 @@ function startRecognition() {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
         console.log(final_transcript);
-        setInput(final_transcript);
+        if(isCommand = true){
+          var command = final_transcript.slice(final_transcript.toLowerCase().search(MIRROR_NAME.toLowerCase()), final_transcript.length);
+          console.log(command)
+          setInput(command);
+        }
       } else {
-        interim_transcript += event.results[i][0].transcript;
-        $("#speechTranscript").val(interim_transcript);
+        var nameFound = false;
+        for(var j = 0; j < event.results[i].length; j++){
+          if(event.results[i][j].transcript.toLowerCase().search(MIRROR_NAME.toLowerCase()) > -1){
+            interim_transcript += event.results[i][j].transcript;
+            nameFound = true;
+          }
+        }
+        if(nameFound == false && isCommand){
+          interim_transcript += event.results[i][0].transcript;
+        }else if(nameFound){
+          isCommand = true;
+        }
+
+        if(isCommand){
+          $("#speechTranscript").val(interim_transcript);
+        }
       }
     }
 
@@ -74,10 +93,23 @@ function setInput(text) {
   console.log(text);
   send();
   final_transcript = '';
+  //Implement this when speech actually works haha
+  //document.getElementById('speechTranscript').style.visibility = "hidden";
 }
 
 function send() {
-  var text = $("#speechTranscript").val();
+  var inputSize = $("#speechTranscript").val().length;
+  var text = $("#speechTranscript").val().slice(MIRROR_NAME.length + 1, inputSize); //This should work for most cases, need to test it out more
+  /*
+  for(var i = 0; i < text.length - 1; i++){
+    if(text.charAt(i) == " "){
+      if(text.charAt(i) == text.charAt(i + 1)){
+        text.charAt(i) = "";
+      }
+    }
+  }
+  */
+  console.log(text);
   $.ajax({
     type: "POST",
     url: baseUrl + "query/",
@@ -90,6 +122,7 @@ function send() {
     data: JSON.stringify({ q: text, lang: "en" }),
     success: function(data) {
       getServiceFromAPIAI(data);
+      console.log(data);
       setResponse(JSON.stringify(data, undefined, 2));
     },
     error: function() {

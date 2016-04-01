@@ -9,7 +9,10 @@ function auto_grow(element) {
 	element.style.height = "5px";
 	element.style.height = (element.scrollHeight)+"px";
 }
-
+navigator.geolocation.getCurrentPosition(print_position);
+function print_position(position){
+	console.log(position);
+}
 (function($) {
 
 

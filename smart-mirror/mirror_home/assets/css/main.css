@@ -3530,15 +3530,6 @@
 		margin: 0 auto;
 	}
 
-
-	#speechToText {
-		position: fixed;
-		z-index: 10001;
-		bottom: 0;
-		margin-left: 12em;
-		left: 25%;
-	}
-
 /* Sidebar */
 
 	#sidebar {
@@ -3926,4 +3917,17 @@
 				background-attachment: scroll;
 			}
 
+		}
+		#speechToText {
+			position: fixed;
+			z-index: 10001;
+			bottom: 0;
+			margin-left: 12em;
+			left: 25%;
+		}
+
+	.topright {
+			position: absolute;
+			top: 8px;
+			right: 16px;
 		}

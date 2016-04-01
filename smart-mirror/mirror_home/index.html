@@ -26,6 +26,7 @@
 		<script id="mainjs" src="assets/js/main.js"></script>
 		<script src="assets/js/speechToText.js"></script>
 		<script src="assets/js/appLauncher.js"></script>
+		<script src="assets/js/weather.js"></script>
 		<script>
 			//Hides the scrollbar, very nice!
 	    document.documentElement.style.overflow = 'hidden';  // firefox, chrome
@@ -42,7 +43,9 @@
 					<nav>
 						<ul id="applist">
 							<li><a href="#intro">Welcome</a></li>
+							<!--
 							<li><a href="#one">Speech Demo</a></li>
+							-->
 						</ul>
 					</nav>
 					<webview id = "youtubeMusicPlayer" src = "https://wwww.google.com" style = "opacity: 0; width: 0px;" nodeintegration = "on" useragent = "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19"> </webview>
@@ -54,9 +57,18 @@
 			<div id="wrapper">
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up" >
+						<div id="TR_widget" class="topright">
+							<img id="dailyWeatherPicture" src="" style="width:128px; height:128px;  -webkit-filter: grayscale(1); " >
+							<h2 id="weatherTemp" style="text-align: center;">  </h2>
+						</div>
+
+						<h1>Hello Friend</h1>
+						<p>Welcome to the D3 Smart mirror. Try asking me to play a song</p>
+
 						<script src = "assets/js/youtubeauth.js"></script>
-					 </section>
-				<!-- One -->
+					</section>
+
+				<!-- One
 				<section id="one" class="wrapper style1 fullscreen fade-up">
 					<head>
 						<title>API Example</title>
@@ -68,11 +80,12 @@
 						</div>
 					</body>
 				</section>
+				-->
 
 			</div>
 
 			<div id ="speechToText" class = "speechToText">
-				<textarea id ="speechTranscript" onkeyup="auto_grow(this)" style="overflow:hidden; outline: none; resize: none; min-height: 50px; max-height: 100px;" rows = "1" cols="40" wrap = "hard"></textarea>
+				<textarea id ="speechTranscript" onkeyup="auto_grow(this)" style=" overflow:hidden; outline: none; resize: none; min-height: 50px; max-height: 100px;" rows = "1" cols="40" wrap = "hard"></textarea>
 			</div>
 
 	</body>
