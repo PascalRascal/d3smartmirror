@@ -8,6 +8,13 @@ const BrowserWindow = electron.BrowserWindow;
 
 var ipcMain = electron.ipcMain;
 
+//IBM Watson S2T Requirements
+var express = require('express'),
+  watsonApp = express(),
+  vcapServices = require('vcap_services'),
+  extend = require('util')._extend,
+  watson = require('watson-developer-cloud');
+
 var fs = require("fs"),
     path = require("path");
 
@@ -17,6 +24,7 @@ let mainWindow;
 
 //Shoots back the youtube video url from the webview to the renderer
 ipcMain.on('videoDOM', function(event, arg) {
+  console.log("Message received!");
   mainWindow.webContents.send('youtubeMusicSrc', arg);
 });
 
@@ -61,3 +69,43 @@ app.on('activate', function () {
     createWindow();
   }
 });
+
+
+// load environment properties from a .env file for local development
+require('dotenv').load({silent: true});
+// Bootstrap application settings
+require('./config/express')(watsonApp);
+
+// For local development, replace username and password
+var config = extend({
+  version: 'v1',
+  url: 'https://stream.watsonplatform.net/speech-to-text/api',
+  username: process.env.STT_USERNAME || '6b9ca230-5814-4d17-a99c-22a9dcb77625',
+  password: process.env.STT_PASSWORD || 'Xm0dkjubgeOZ'
+}, vcapServices.getCredentials('speech_to_text'));
+
+var authService = watson.authorization(config);
+
+watsonApp.get('/', function(req, res) {
+  console.log("Get shit");
+  res.render('index', {
+    ct: req._csrfToken,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
+  });
+});
+
+// Get token using your credentials
+watsonApp.post('/api/token', function(req, res, next) {
+  authService.getToken({url: config.url}, function(err, token) {
+    if (err)
+      next(err);
+    else
+      console.log(token);
+      res.send(token);
+  });
+});
+
+// error-handler settings
+require('./config/error-handler')(watsonApp);
+
+module.exports = watsonApp;

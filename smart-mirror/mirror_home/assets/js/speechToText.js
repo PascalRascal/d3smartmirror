@@ -18,6 +18,7 @@ function startRecognition() {
   recognition.continuous = true;
   recognition.interimResults = true;
   recognizing = true;
+  recognition.serviceURI = 'wami.csail.mit.edu';
 
   recognition.onstart = function(event) {
     recognizing = true;

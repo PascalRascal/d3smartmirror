@@ -54,3 +54,7 @@ youtubeMusicPlayer.addEventListener("did-finish-load", function() {
   var pauseYoutubeMusic = function(){
     html5musicplayer.pause();
   }
+
+  var resumeYoutubeMusic = function(){
+    html5musicplayer.play();
+  }

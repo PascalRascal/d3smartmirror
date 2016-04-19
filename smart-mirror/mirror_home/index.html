@@ -24,9 +24,16 @@
 		<script src = "assets/js/config.js"></script>
 		<script src="assets/js/annyang.js"></script>
 		<script id="mainjs" src="assets/js/main.js"></script>
+
+
+		<script src="assets/js/Microphone.js"></script>
+		<script src="assets/js/watsonSpeechToText.js"></script>
+		<script src="assets/js/handleWatsonSTT.js"></script>
+		<script src="assets/js/startWatsonSTT.js"></script>
 		<script src="assets/js/speechToText.js"></script>
 		<script src="assets/js/appLauncher.js"></script>
 		<script src="assets/js/weather.js"></script>
+		<script src="assets/js/calendar.js"></script>
 		<script>
 			//Hides the scrollbar, very nice!
 	    document.documentElement.style.overflow = 'hidden';  // firefox, chrome
@@ -42,7 +49,7 @@
 				<div class="inner" id="list">
 					<nav>
 						<ul id="applist">
-							<li><a href="#intro">Welcome</a></li>
+							<li><a id="home" href="#intro">Welcome</a></li>
 							<!--
 							<li><a href="#one">Speech Demo</a></li>
 							-->
@@ -58,8 +65,12 @@
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up" >
 						<div id="TR_widget" class="topright">
-							<img id="dailyWeatherPicture" src="" style="width:128px; height:128px;  -webkit-filter: grayscale(1); " >
-							<h2 id="weatherTemp" style="text-align: center;">  </h2>
+							<img id="dailyWeatherPicture" src="" style="width:128px; height:128px;  -webkit-filter: grayscale(1); display: block; margin-left: auto; margin-right: auto;" >
+							<h2 id="weatherTemp" style="text-align: center;"> </h2>
+							<h3 id="THEDATEOFTODAY" style = "text-align: center;"> LOOK AT ME </h3>
+							<dl id="currentEvents">
+
+							</dl>
 						</div>
 
 						<h1>Hello Friend</h1>

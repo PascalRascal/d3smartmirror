@@ -1,0 +1,12 @@
+{
+  "href" : "calendar",
+  "title": "Calendar",
+  "description": "A neat little calendar to display your events!",
+  "author": "Blaise Marchetti",
+  "html": "calendar.html",
+  "entity_name": "calendar",
+  "commands": [
+
+  ],
+  "main": "main.js"
+}

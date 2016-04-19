@@ -15,13 +15,14 @@ function send_position(position){
         mWeatherRequest.send();
       }else{
         //Todays weather will be the first object in the array
+        console.log(weatherResults);
         var todaysWeather = weatherResults.consolidated_weather[0];
 
         var todaysWeatherPic = "https://www.metaweather.com/static/img/weather/png/" + todaysWeather.weather_state_abbr + ".png";
 
         document.getElementById("dailyWeatherPicture").setAttribute("src", todaysWeatherPic);
         todayTemp = todaysWeather.the_temp;
-        todayTemp = (todayTemp* 1.8 + 32).toPrecision(3); //Converst from celsisus to degrees
+        todayTemp = (todayTemp * 1.8 + 32).toPrecision(3); //Converst from celsisus to degrees
         document.getElementById("weatherTemp").innerHTML = todayTemp + " °F";
       }
     }
