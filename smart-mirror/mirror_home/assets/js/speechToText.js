@@ -70,8 +70,23 @@ function startRecognition() {
   };
 
   recognition.onerror = function(event){
-
     console.log(event);
+    if(event.error == "network"){
+      var watsontokenGenerator = createTokenGenerator();
+        watsontokenGenerator.getToken(function(err, token){
+          if(token){
+            var context = {
+              currentModel: 'en-US_BroadbandModel',
+              token: token,
+              bufferSize: 8192
+            };
+            startListeningWatson(context);
+          }
+        });
+      }
+      else{
+        recognition.start();
+      }
   }
   recognition.lang = "en-US";
   recognition.start();
