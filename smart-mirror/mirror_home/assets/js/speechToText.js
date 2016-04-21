@@ -93,7 +93,6 @@ function startRecognition() {
         });
       }
       else{
-        recognition.start();
       }
   }
   recognition.lang = "en-US";
