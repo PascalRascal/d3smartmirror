@@ -1,5 +1,6 @@
 "use strict"
 var baseUrl = "https://api.api.ai/v1/";
+var networkError = false;
 $(document).ready(function() {
   $("#speechTranscript").keypress(function(event) {
     if (event.which == 13) {
@@ -70,11 +71,15 @@ function startRecognition() {
 
   recognition.onend = function() {
     console.log('No longer listening!')
+    if(!networkError){
+      recognition.start();
+    }
   };
 
   recognition.onerror = function(event){
     console.log(event);
     if(event.error == "network"){
+      networkError = true;
       var watsontokenGenerator = createTokenGenerator();
         watsontokenGenerator.getToken(function(err, token){
           if(token){
