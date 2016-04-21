@@ -24,6 +24,7 @@ function startRecognition() {
     recognizing = true;
     console.log('Starting to listen!');
     console.log(recognition);
+    // $("#speechTranscript").hide();
   };
 
   recognition.onresult = function(event) {
@@ -42,8 +43,10 @@ function startRecognition() {
           var command = final_transcript.slice(final_transcript.toLowerCase().search(MIRROR_NAME.toLowerCase()), final_transcript.length);
           console.log(command)
           setInput(command);
+          // $("#speechTranscript").hide();
         }
       } else {
+        $("#speechTranscript").show();
         var nameFound = false;
         for(var j = 0; j < event.results[i].length; j++){
           if(event.results[i][j].transcript.toLowerCase().search(MIRROR_NAME.toLowerCase()) > -1){

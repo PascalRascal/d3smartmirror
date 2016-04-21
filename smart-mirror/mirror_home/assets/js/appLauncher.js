@@ -40,6 +40,14 @@ var getServiceFromAPIAI = function(data){
   if(data.result.metadata.intentName == "AppLaunch"){
       launchApp(data);
   }
+  if(data.result.metadata.intentName == "MirrorSwitch"){
+    if(data.result.parameters.PowerOption == "Off"){
+      turnMirrorOff();
+    }
+    if(data.result.parameters.PowerOption == "On"){
+      turnMirrorOn();
+    }
+  }
 
   if(data.result.action == "navigation_choice"){
     if(data.result.parameters.navChosen == 'home'){
@@ -112,4 +120,11 @@ function addAnother(service) {
     //catGetter.open("GET", "http://thecatapi.com/api/images/get?format=xml&results_per_page=1", true);
     //catGetter.send();
 
+}
+
+function turnMirrorOff(){
+  $("#mainBody").fadeOut("slow");
+}
+function turnMirrorOn(){
+  $("#mainBody").fadeIn("slow");
 }

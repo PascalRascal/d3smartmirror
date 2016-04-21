@@ -39,7 +39,7 @@
 	    document.documentElement.style.overflow = 'hidden';  // firefox, chrome
 		</script>
 	</head>
-	<body>
+	<body id="mainBody">
 
 		<!-- Sidebar -->
 		<section id="sidebar">
@@ -55,8 +55,6 @@
 							-->
 						</ul>
 					</nav>
-					<webview id = "youtubeMusicPlayer" src = "https://wwww.google.com" style = "opacity: 0; width: 0px;" nodeintegration = "on" useragent = "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19"> </webview>
-					<audio  controls id= "html5MusicSource"src = "" type = "video/mp4"> Testing 1-2 </audio>
 				</div>
 			</section>
 
@@ -72,11 +70,11 @@
 
 							</dl>
 						</div>
+						<webview id = "youtubeMusicPlayer" src = "https://wwww.google.com" style = "opacity: 0; width: 0px;" nodeintegration = "on" useragent = "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19"> </webview>
 
 						<h1>Hello Friend</h1>
 						<p>Welcome to the D3 Smart mirror. Try asking me to play a song</p>
 
-						<script src = "assets/js/youtubeauth.js"></script>
 					</section>
 
 				<!-- One
@@ -96,7 +94,9 @@
 			</div>
 
 			<div id ="speechToText" class = "speechToText">
+				<audio  controls id= "html5MusicSource"src = "" type = "video/mp4"> Testing 1-2 </audio>
 				<textarea id ="speechTranscript" onkeyup="auto_grow(this)" style=" overflow:hidden; outline: none; resize: none; min-height: 50px; max-height: 100px;" rows = "1" cols="40" wrap = "hard"></textarea>
+				<script src = "assets/js/youtubeauth.js"></script>
 			</div>
 
 	</body>

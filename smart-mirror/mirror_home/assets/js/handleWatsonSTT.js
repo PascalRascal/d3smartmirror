@@ -6,6 +6,7 @@ var handleWatson = function(msg){
     transcript = transcript.slice(transcript.toLowerCase().search(MIRROR_NAME.toLowerCase()), transcript.length);
     isWatsonCommand = true;
     $("#speechTranscript").val(transcript);
+    $("#speechTranscript").show();
   }
   console.log(transcript);
   if(results.final && isWatsonCommand){
@@ -15,5 +16,6 @@ var handleWatson = function(msg){
     console.log(command);
     isWatsonCommand = false;
     send();
+    $("#speechTranscript").hide();
   }
 }
