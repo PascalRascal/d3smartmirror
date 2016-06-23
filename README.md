@@ -11,13 +11,24 @@ Created in order to get learn HTML, CSS, Javascript, and Node.js
 Make sure that Node.js and npm are installed on your device
 
 1.  Open terminal
+2.  cd ~
+3.  git clone https://github.com/PascalRascal/d3smartmirror
+4.  cd d3smartmirror
+5.  cd smart-mirror
+6.  npm install
+7.  npm start
 
 
-## API Reference
+## Features
+* Continuous voice-to-text recognition
+* Online music streaming via youtube
+* Weather
+* Google Calendar integration
+* Customizable mirror-name (Default: Dorian)
+* Cute cat pictures on demand
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+## Test
+Try saying "Dorian play Buckeye Battle Cry"
 
-## Tests
 
-Describe and show how to run the tests with code examples.
 
