@@ -27,7 +27,7 @@ Make sure that Node.js and npm are installed on your device
 * Customizable mirror-name (Default: Dorian)
 * Cute cat pictures on demand
 
-## Test
+## Test Command
 Try saying "Dorian play Buckeye Battle Cry"
 
 
